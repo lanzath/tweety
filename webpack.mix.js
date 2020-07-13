@@ -11,5 +11,9 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+mix.js('resources/js/app.js', 'public/js');
+
+// Method to process your CSS and include tailwindcss as a plugin
+mix.postCss('resources/css/main.css', 'public/css', [
+    require('tailwindcss')
+  ]);
