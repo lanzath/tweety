@@ -1,3 +1,14 @@
+# <p align="center"> Tweety Project! </p>
+**Here's my commented code to Tweeter clone project from [Laracasts](https://laracasts.com/)!**
+
+**I'm doing my best to apply the Laravel best practices here and document code with PHP Docs**
+
+**This is from [Laravel 6 from Scratch Course](https://laracasts.com/series/laravel-6-from-scratch/), awesome content and very didatic.**
+
+**I'd like to thank Jeffrey for his awesome free course, I do not have the rights from this project and it goes all to Laracasts.**
+
+Enjoy  :)
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
