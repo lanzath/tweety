@@ -24,7 +24,13 @@
             <button
                 type="submit"
                 class="bg-blue-500 rounded-lg shadow py-2 px-2 text-white"
-            >Tweet!</button>
+            >
+                Tweet!
+            </button>
         </footer>
     </form>
+
+    @error('body')
+        <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
+    @enderror
 </div>

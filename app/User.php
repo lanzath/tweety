@@ -39,13 +39,34 @@ class User extends Authenticatable
     ];
 
     /**
-     * User database relationship
+     * Tweet database relationship, User can have many Tweets
      *
      * @return void
      */
     public function tweet()
     {
         return $this->hasMany(Tweet::class);
+    }
+
+    /**
+     * Follow database Relationship, User can follow many users
+     *
+     * @return void
+     */
+    public function follows()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'user_id', 'following_user_id');
+    }
+
+    /**
+     * Method to create a new relationship (Follow)
+     *
+     * @param  User $user
+     * @return void
+     */
+    public function follow(User $user)
+    {
+        return $this->follows()->save($user);
     }
 
     /**
