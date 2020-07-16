@@ -12,7 +12,7 @@ class TweetController extends Controller
      * Store a newly tweet in storage
      *
      * @param  TweetRequest $request
-     * @return JsonResponse
+     * @return Redirect
      */
     public function store(TweetRequest $request)
     {
