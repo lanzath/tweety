@@ -8,13 +8,13 @@ class Tweet extends Model
 {
     protected $guarded = [];
 
+    /**
+     * User database relationship
+     *
+     * @return void
+     */
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function getAuthenticatedUser()
-    {
-      $this->attributes['user_id'] = auth()->id;
     }
 }
