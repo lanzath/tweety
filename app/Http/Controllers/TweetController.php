@@ -21,6 +21,6 @@ class TweetController extends Controller
             'body' => $request->validated()['body'],
         ]);
 
-        return redirect('/home');
+        return redirect()->route('home');
     }
 }
