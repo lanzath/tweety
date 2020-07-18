@@ -39,37 +39,6 @@ class User extends Authenticatable
     ];
 
     /**
-     * Tweet database relationship, User can have many Tweets
-     *
-     * @return void
-     */
-    public function tweet()
-    {
-        return $this->hasMany(Tweet::class);
-    }
-
-    /**
-     * Follow database Relationship, User can follow many users
-     *
-     * @return void
-     */
-    public function follows()
-    {
-        return $this->belongsToMany(User::class, 'follows', 'user_id', 'following_user_id');
-    }
-
-    /**
-     * Method to create a new relationship (Follow)
-     *
-     * @param  User $user
-     * @return void
-     */
-    public function follow(User $user)
-    {
-        return $this->follows()->save($user);
-    }
-
-    /**
      * Get avatar URL
      *
      * @return string
@@ -86,6 +55,45 @@ class User extends Authenticatable
      */
     public function timeline()
     {
-        return Tweet::where('user_id', $this->id)->latest()->get();
+        // include all of the user's tweets
+        // as well as the tweets of everyone
+        // they follow in descending order by date
+
+        $friends = $this->follows()->pluck('id');
+
+        return Tweet::whereIn('user_id', $friends)
+            ->orWhere('user_id', $this->id)
+            ->latest()->get();
+    }
+
+    /**
+     * Tweet database relationship, User can have many Tweets
+     *
+     * @return void
+     */
+    public function tweet()
+    {
+        return $this->hasMany(Tweet::class);
+    }
+
+    /**
+     * Method to create a new relationship (Follow)
+     *
+     * @param  User $user
+     * @return void
+     */
+    public function follow(User $user)
+    {
+        return $this->follows()->save($user);
+    }
+
+    /**
+     * Follow database Relationship, User can follow many users
+     *
+     * @return void
+     */
+    public function follows()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'user_id', 'following_user_id');
     }
 }
