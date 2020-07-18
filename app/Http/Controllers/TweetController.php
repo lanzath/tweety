@@ -23,4 +23,16 @@ class TweetController extends Controller
 
         return redirect()->route('home');
     }
+
+    /**
+     * Show the tweets timeline.
+     *
+     * @return View
+     */
+    public function index()
+    {
+        return view('home', [
+            'tweets' => auth()->user()->timeline(),
+        ]);
+    }
 }
