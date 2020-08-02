@@ -96,4 +96,13 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(User::class, 'follows', 'user_id', 'following_user_id');
     }
+
+    /**
+     * Use user name as key to browse through routes
+     * @return String
+     */
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
 }
